@@ -1,8 +1,10 @@
 package TPE_POO.paintPOO.src.backend.model;
 
+import javafx.scene.paint.Color;
+
 public class Square extends Rectangle{
-    public Square(Point topLeft, Point bottomRight) {
-        super(topLeft, bottomRight);
+    public Square(Point topLeft, Point bottomRight, Color borderColor, Color insideColor, double lineWidth) {
+        super(topLeft, bottomRight, borderColor, insideColor, lineWidth);
     }
 
     public double Side(){
@@ -11,6 +13,7 @@ public class Square extends Rectangle{
 
     @Override
     public String toString() {
-        return String.format("Cuadrado [ %s, %s ]", super.getTopLeft(), super.getBottomRight());
+        Point bottom = new Point(super.getBottomRight().getX(), super.getTopLeft().getY() + (super.getBottomRight().getY() - super.getTopLeft().getY()));
+        return String.format("Cuadrado [ %s, %s ]", super.getTopLeft(), bottom);
     }
 }

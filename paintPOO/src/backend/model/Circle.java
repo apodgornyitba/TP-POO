@@ -1,12 +1,18 @@
 package TPE_POO.paintPOO.src.backend.model;
+
+import javafx.scene.paint.Color;
+
 public class Circle extends Figure {
 
     protected final Point centerPoint;
     protected final double radius;
 
-    public Circle(Point centerPoint, double radius) {
+    public Circle(Point centerPoint, double radius, Color borderColor, Color insideColor, double lineWidth) {
         this.centerPoint = centerPoint;
         this.radius = radius;
+        setBorderColor(borderColor);
+        setInsideColor(insideColor);
+        setLineWidth(lineWidth);
     }
 
     @Override
@@ -24,7 +30,7 @@ public class Circle extends Figure {
 
     @Override
     public void move(double newX, double newY) {
-        centerPoint.x += newX;
-        centerPoint.y += newY;
+        centerPoint.setX(centerPoint.getY() + newX);
+        centerPoint.setY(centerPoint.getY() + newY);
     }
 }
