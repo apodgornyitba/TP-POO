@@ -1,5 +1,4 @@
 package TPE_POO.paintPOO.src.backend.model;
-
 public class Circle extends Figure {
 
     protected final Point centerPoint;
@@ -23,4 +22,9 @@ public class Circle extends Figure {
         return radius;
     }
 
+    @Override
+    public void move(double newX, double newY) {
+        centerPoint.x += newX;
+        centerPoint.y += newY;
+    }
 }
