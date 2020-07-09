@@ -31,6 +31,17 @@ public class Line extends Figure {
     }
 
     @Override
+    public boolean figureBelongs(Point eventPoint) {
+        return false;
+    }
+
+    @Override
+    public boolean figureBelongs(Point startPoint, Point endPoint) {
+        return this.startPoint.getX() > startPoint.getX() && this.startPoint.getY() > startPoint.getY() && this.startPoint.getX() < endPoint.getX() && this.startPoint.getY() < endPoint.getY()
+                && this.endPoint.getX() > startPoint.getX() && this.endPoint.getY() > startPoint.getY() && this.endPoint.getX() < endPoint.getX() && this.endPoint.getY() < endPoint.getY();
+    }
+
+    @Override
     public String toString() {
         return String.format("Linea [ %s, %s ]", startPoint, endPoint);
     }

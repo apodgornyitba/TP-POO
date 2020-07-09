@@ -7,6 +7,8 @@ public abstract class Figure {
     private double lineWidth;
 
     public abstract void move(double newX, double newY);
+    public abstract boolean figureBelongs(Point eventPoint);
+    public abstract boolean figureBelongs(Point startPoint, Point endPoint);
 
     public Color getBorderColor() {
         return borderColor;

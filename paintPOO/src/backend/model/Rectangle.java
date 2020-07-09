@@ -36,6 +36,18 @@ public class Rectangle extends Figure {
     }
 
     @Override
+    public boolean figureBelongs(Point eventPoint) {
+        return eventPoint.getX() > topLeft.getX() && eventPoint.getX() < bottomRight.getX() &&
+                eventPoint.getY() > topLeft.getY() && eventPoint.getY() < bottomRight.getY();
+    }
+
+    @Override
+    public boolean figureBelongs(Point startPoint, Point endPoint) {
+        return startPoint.getX() <= topLeft.getX() && bottomRight.getX() <= endPoint.getX()
+                && startPoint.getY() <= topLeft.getY() && endPoint.getY() >= bottomRight.getY();
+    }
+
+    @Override
     public void move(double newX, double newY) {
         topLeft.setX(topLeft.getX() + newX);
         topLeft.setY(topLeft.getY() + newY);
