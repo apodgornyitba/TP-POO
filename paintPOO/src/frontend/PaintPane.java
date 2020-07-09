@@ -33,18 +33,19 @@ public class PaintPane extends BorderPane {
 	Color fillColor = Color.YELLOW;
 
 	// Botones Barra Izquierda
-	private final ToggleButton selectionButton = new ToggleButton("Seleccionar");
-	private final ToggleButton rectangleButton = new ToggleButton("Rectángulo");
-	private final ToggleButton squareButton = new ToggleButton("Cuadrado");
-	private final ToggleButton circleButton = new ToggleButton("Círculo");
-	private final ToggleButton ellipseButton = new ToggleButton("Elipse");
-	private final ToggleButton lineButton = new ToggleButton("Linea");
+	private ToggleButton selectionButton = new ToggleButton("Seleccionar");
+	private ToggleButton rectangleButton = new ToggleButton("Rectángulo");
+	private ToggleButton squareButton = new ToggleButton("Cuadrado");
+	private ToggleButton circleButton = new ToggleButton("Círculo");
+	private ToggleButton ellipseButton = new ToggleButton("Elipse");
+	private ToggleButton lineButton = new ToggleButton("Linea");
 
 	//Borde (Border)
-	private final Slider border = new Slider(1, 25, 1);
-	private final ColorPicker borderColorPicker = new ColorPicker(lineColor);
+	private Slider border = new Slider(1, 25, 1);
+	private ColorPicker borderColorPicker = new ColorPicker(lineColor);
 
-	private final ColorPicker insideColorPicker = new ColorPicker(fillColor);
+	//Relleno (Inside)
+	private ColorPicker insideColorPicker = new ColorPicker(fillColor);
 
 
 	// Dibujar una figura
@@ -143,26 +144,17 @@ public class PaintPane extends BorderPane {
 					}
 				}
 				if (found) {
-					borderColorPicker.setOnAction(new EventHandler<ActionEvent>() {
-						@Override
-						public void handle(ActionEvent event) {
-							selectedFigure.setBorderColor(borderColorPicker.getValue());
-							redrawCanvas();
-						}
+					borderColorPicker.setOnAction(event1 -> {
+						selectedFigure.setBorderColor(borderColorPicker.getValue());
+						redrawCanvas();
 					});
-					insideColorPicker.setOnAction(new EventHandler<ActionEvent>() {
-						@Override
-						public void handle(ActionEvent event) {
-							selectedFigure.setInsideColor(insideColorPicker.getValue());
-							redrawCanvas();
-						}
+					insideColorPicker.setOnAction(event12 -> {
+						selectedFigure.setInsideColor(insideColorPicker.getValue());
+						redrawCanvas();
 					});
-					border.valueProperty().addListener(new ChangeListener<Number>() {
-						@Override
-						public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-							selectedFigure.setLineWidth(newValue.doubleValue());
-							redrawCanvas();
-						}
+					border.valueProperty().addListener((observable, oldValue, newValue) -> {
+						selectedFigure.setLineWidth(newValue.doubleValue());
+						redrawCanvas();
 					});
 					statusPane.updateStatus(label.toString());
 				} else {
@@ -192,9 +184,10 @@ public class PaintPane extends BorderPane {
 			if(figure == selectedFigure) {
 				gc.setStroke(Color.RED);
 			} else {
-				gc.setStroke(lineColor);
+				gc.setStroke(figure.getBorderColor());
 			}
-			gc.setFill(fillColor);
+			gc.setFill(figure.getInsideColor());
+			gc.setLineWidth(figure.getLineWidth());
 			if(figure instanceof Rectangle) {
 				if(figure instanceof Ellipse){
 					Ellipse ellipse = (Ellipse) figure;
