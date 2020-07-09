@@ -8,8 +8,6 @@ import TPE_POO.paintPOO.src.backend.model.Point;
 import TPE_POO.paintPOO.src.backend.model.Rectangle;
 import TPE_POO.paintPOO.src.backend.model.Square;
 import TPE_POO.paintPOO.src.backend.model.Line;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.Cursor;
