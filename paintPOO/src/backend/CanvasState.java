@@ -5,11 +5,12 @@ import TPE_POO.paintPOO.src.backend.model.Point;
 import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class CanvasState {
     //Lista de figuras dibujadas
-    private final List<Figure> list = new ArrayList<>();
+    private final LinkedList<Figure> list = new LinkedList<>();
 
     //Lista de figuras seleccionadas
     private final List<Figure> multipleSelection = new ArrayList<>();
@@ -94,5 +95,15 @@ public class CanvasState {
         for (Figure figure : multipleSelection) {
             figure.setLineWidth(lineWidth);
         }
+    }
+
+    public void toFront(Figure figure){
+        list.remove(figure);
+        list.addLast(figure);
+    }
+
+    public void toBack(Figure figure){
+        list.remove(figure);
+        list.addFirst(figure);
     }
 }
