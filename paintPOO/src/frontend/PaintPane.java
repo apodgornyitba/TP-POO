@@ -33,19 +33,19 @@ public class PaintPane extends BorderPane {
 	Color fillColor = Color.YELLOW;
 
 	// Botones Barra Izquierda
-	private ToggleButton selectionButton = new ToggleButton("Seleccionar");
-	private ToggleButton rectangleButton = new ToggleButton("Rectángulo");
-	private ToggleButton squareButton = new ToggleButton("Cuadrado");
-	private ToggleButton circleButton = new ToggleButton("Círculo");
-	private ToggleButton ellipseButton = new ToggleButton("Elipse");
-	private ToggleButton lineButton = new ToggleButton("Linea");
+	private final ToggleButton selectionButton = new ToggleButton("Seleccionar");
+	private final ToggleButton rectangleButton = new ToggleButton("Rectángulo");
+	private final ToggleButton squareButton = new ToggleButton("Cuadrado");
+	private final ToggleButton circleButton = new ToggleButton("Círculo");
+	private final ToggleButton ellipseButton = new ToggleButton("Elipse");
+	private final ToggleButton lineButton = new ToggleButton("Linea");
 
 	//Borde (Border)
-	private Slider border = new Slider(1, 25, 1);
-	private ColorPicker borderColorPicker = new ColorPicker(lineColor);
+	private final Slider border = new Slider(1, 25, 1);
+	private final ColorPicker borderColorPicker = new ColorPicker(lineColor);
 
 	//Relleno (Inside)
-	private ColorPicker insideColorPicker = new ColorPicker(fillColor);
+	private final ColorPicker insideColorPicker = new ColorPicker(fillColor);
 
 
 	// Dibujar una figura
@@ -134,6 +134,7 @@ public class PaintPane extends BorderPane {
 		canvas.setOnMouseClicked(event -> {
 			if(selectionButton.isSelected()) {
 				Point eventPoint = new Point(event.getX(), event.getY());
+				selectedFigure = null;
 				boolean found = false;
 				StringBuilder label = new StringBuilder("Se seleccionó: ");
 				for (Figure figure : canvasState.figures()) {
