@@ -41,7 +41,6 @@ public class Circle extends Figure {
 
     @Override
     public void move(double newX, double newY) {
-        centerPoint.setX(centerPoint.getY() + newX);
-        centerPoint.setY(centerPoint.getY() + newY);
+        centerPoint.move(newX, newY);
     }
 }

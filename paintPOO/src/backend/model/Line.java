@@ -24,10 +24,8 @@ public class Line extends Figure {
 
     @Override
     public void move(double newX, double newY) {
-        startPoint.setX(startPoint.getX() + newX);
-        startPoint.setY(startPoint.getY() + newY);
-        endPoint.setX(endPoint.getX() + newX);
-        endPoint.setY(endPoint.getY() + newY);
+        startPoint.move(newX, newY);
+        endPoint.move(newX, newY);
     }
 
     @Override
@@ -40,7 +38,6 @@ public class Line extends Figure {
         return this.startPoint.getX() > startPoint.getX() && this.startPoint.getY() > startPoint.getY() && this.startPoint.getX() < endPoint.getX() && this.startPoint.getY() < endPoint.getY()
                 && this.endPoint.getX() > startPoint.getX() && this.endPoint.getY() > startPoint.getY() && this.endPoint.getX() < endPoint.getX() && this.endPoint.getY() < endPoint.getY();
     }
-
     @Override
     public String toString() {
         return String.format("Linea [ %s, %s ]", startPoint, endPoint);

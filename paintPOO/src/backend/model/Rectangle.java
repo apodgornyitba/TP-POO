@@ -49,9 +49,7 @@ public class Rectangle extends Figure {
 
     @Override
     public void move(double newX, double newY) {
-        topLeft.setX(topLeft.getX() + newX);
-        topLeft.setY(topLeft.getY() + newY);
-        bottomRight.setX(bottomRight.getX() + newX);
-        bottomRight.setY(bottomRight.getY() + newY);
+        topLeft.move(newX, newY);
+        bottomRight.move(newX, newY);
     }
 }

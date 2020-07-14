@@ -25,6 +25,11 @@ public class Point {
         this.y = y;
     }
 
+    public void move(double newX, double newY) {
+        this.x += newX;
+        this.y += newY;
+    }
+
     @Override
     public String toString() {
         return String.format("{%.2f , %.2f}", x, y);
