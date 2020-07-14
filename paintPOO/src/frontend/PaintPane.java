@@ -207,29 +207,7 @@ public class PaintPane extends BorderPane {
 			}
 			gc.setFill(figure.getInsideColor());
 			gc.setLineWidth(figure.getLineWidth());
-			if(figure instanceof Rectangle) {
-				if(figure instanceof Ellipse){
-					Ellipse ellipse = (Ellipse) figure;
-					gc.strokeOval(ellipse.getTopLeft().getX(), ellipse.getTopLeft().getY(), ellipse.base(), ellipse.height());
-					gc.fillOval(ellipse.getTopLeft().getX(), ellipse.getTopLeft().getY(), ellipse.base(), ellipse.height());
-				} else if(figure instanceof Square){
-					Square square=(Square) figure;
-					gc.strokeRect(square.getTopLeft().getX(),square.getTopLeft().getY(),square.Side(),square.Side());
-					gc.fillRect(square.getTopLeft().getX(),square.getTopLeft().getY(),square.Side(),square.Side());
-				} else {
-					Rectangle rectangle = (Rectangle) figure;
-					gc.fillRect(rectangle.getTopLeft().getX(), rectangle.getTopLeft().getY(), rectangle.base(), rectangle.height());
-					gc.strokeRect(rectangle.getTopLeft().getX(), rectangle.getTopLeft().getY(), rectangle.base(), rectangle.height());
-				}
-			} else if(figure instanceof Circle) {
-				Circle circle = (Circle) figure;
-				double diameter = circle.getRadius() * 2;
-				gc.fillOval(circle.getCenterPoint().getX() - circle.getRadius(), circle.getCenterPoint().getY() - circle.getRadius(), diameter, diameter);
-				gc.strokeOval(circle.getCenterPoint().getX() - circle.getRadius(), circle.getCenterPoint().getY() - circle.getRadius(), diameter, diameter);
-			} else if(figure instanceof Line){
-				Line line = (Line) figure;
-				gc.strokeLine(line.getStartPoint().getX(), line.getStartPoint().getY(), line.getEndPoint().getX(), line.getEndPoint().getY());
-			}
+			figure.reDraw(gc);
 		}
 	}
 

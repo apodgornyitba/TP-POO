@@ -1,5 +1,6 @@
 package TPE_POO.paintPOO.src.backend.model;
 
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 public class Circle extends Figure {
@@ -37,6 +38,13 @@ public class Circle extends Figure {
     public boolean figureBelongs(Point startPoint, Point endPoint) {
         return startPoint.getY() < centerPoint.getY() - getRadius() && endPoint.getY() > centerPoint.getY() + getRadius()
                 && startPoint.getX() < centerPoint.getX() - getRadius() && endPoint.getX() > centerPoint.getX() + getRadius();
+    }
+
+    @Override
+    public void reDraw(GraphicsContext gc) {
+        double diameter = radius * 2;
+        gc.fillOval(centerPoint.getX() - radius, centerPoint.getY() - radius, diameter, diameter);
+        gc.strokeOval(centerPoint.getX() - radius, centerPoint.getY() - radius, diameter, diameter);
     }
 
     @Override

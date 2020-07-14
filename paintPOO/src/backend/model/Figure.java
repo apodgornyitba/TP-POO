@@ -1,8 +1,9 @@
 package TPE_POO.paintPOO.src.backend.model;
 
+import TPE_POO.paintPOO.src.backend.DrawableFigure;
 import javafx.scene.paint.Color;
 
-public abstract class Figure {
+public abstract class Figure implements DrawableFigure {
     private Color borderColor, insideColor;
     private double lineWidth;
 

@@ -36,6 +36,9 @@ Modificaciones:
 	* Se agregan dos métodos abstractos figureBelongs a la clase Figure, uno recibe un único parámetro Point y el otro recibe dos parámetros Point. Se elimina del front end el segmento de código correspondiente.
 	  Se realizo esta modificación con la intención de mejorar el estilo.
 
+	* Se agrego la interfaz funcional DrawableFigure con el metodo reDraw que permite a cada figura saber como representarse en un GraphicContext.
+	  La interfaz Figure implementa a la interfaz DrawableFigure y cada figura se encarga de sobreescribir el metodo reDraw.
+
 Problemas encontrados:
 
 	* Varios errores provenientes de una mala implementación (por ejemplo al agregar las funcionalidades de cambio de color, no se modificó el método reDrawCanvas)

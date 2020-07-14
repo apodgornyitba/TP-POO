@@ -1,5 +1,6 @@
 package TPE_POO.paintPOO.src.backend.model;
 
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 public class Rectangle extends Figure {
@@ -45,6 +46,14 @@ public class Rectangle extends Figure {
     public boolean figureBelongs(Point startPoint, Point endPoint) {
         return startPoint.getX() <= topLeft.getX() && bottomRight.getX() <= endPoint.getX()
                 && startPoint.getY() <= topLeft.getY() && endPoint.getY() >= bottomRight.getY();
+    }
+
+    @Override
+    public void reDraw(GraphicsContext gc) {
+        double base = base();
+        double height = height();
+        gc.fillRect(topLeft.getX(), topLeft.getY(), base, height);
+        gc.strokeRect(topLeft.getX(), topLeft.getY(), base, height);
     }
 
     @Override
