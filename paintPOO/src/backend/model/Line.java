@@ -15,14 +15,6 @@ public class Line extends Figure {
         setLineWidth(lineWidth);
     }
 
-    public Point getStartPoint() {
-        return startPoint;
-    }
-
-    public Point getEndPoint() {
-        return endPoint;
-    }
-
     @Override
     public void move(double newX, double newY) {
         startPoint.move(newX, newY);
